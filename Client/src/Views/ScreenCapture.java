@@ -1,11 +1,11 @@
 package Views;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Robot;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import Control.ChupManHinh;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class ScreenCapture{
     
