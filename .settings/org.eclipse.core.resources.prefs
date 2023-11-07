@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//Client/src/Control/ChupManHinh.java=UTF-8
+encoding//Client/src/Control/GoiManHinh.java=UTF-8
+encoding//Client/src/Control/ThaoTacManHinh.java=UTF-8
+encoding//Client/src/Model/ComputerTableModelClient.java=UTF-8
+encoding//Client/src/Views/ClientGUI.java=UTF-8
+encoding//Server/src/Control/ClientScreenReciever.java=UTF-8
+encoding//Server/src/Model/ComputerTableModel.java=UTF-8
+encoding//Server/src/Model/PacketTin.java=UTF-8
+encoding//Server/src/Views/ServerGUI.java=UTF-8
+encoding/<project>=UTF-8
