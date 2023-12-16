@@ -15,6 +15,8 @@ import Control.ThaoTacManHinh;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class ClientGUI extends JFrame implements Runnable {
 
@@ -34,7 +36,6 @@ public class ClientGUI extends JFrame implements Runnable {
             ipServer = txtIP.getText();
             lblClientName.setText(InetAddress.getLocalHost().getHostName()
                     + " (" + InetAddress.getLocalHost().getHostAddress() + ")");
-            lblIPAddress.setText(ipServer);
             lblStatus.setText("Đang chờ kết nối đến server...");
         } catch (Exception ex) {
         }
@@ -205,8 +206,6 @@ public class ClientGUI extends JFrame implements Runnable {
 
         lblStatus4 = new JLabel();
         lblClientName = new JLabel();
-        lblStatus1 = new JLabel();
-        lblIPAddress = new JLabel();
         lblStatus2 = new JLabel();
         lblStatus = new JLabel();
         btnThoat = new JToggleButton();
@@ -232,12 +231,6 @@ public class ClientGUI extends JFrame implements Runnable {
         lblClientName.setForeground(new Color(255, 0, 51));
         lblClientName.setText("MyComputer");
 
-        lblStatus1.setText("IP Address:");
-
-        lblIPAddress.setFont(new Font("Tahoma", 1, 12)); // NOI18N
-        lblIPAddress.setForeground(new Color(255, 0, 51));
-        lblIPAddress.setText("127.0.0.1");
-
         lblStatus2.setText("Trạng thái:");
 
         lblStatus.setFont(new Font("Tahoma", 2, 12)); // NOI18N
@@ -258,7 +251,7 @@ public class ClientGUI extends JFrame implements Runnable {
         jLabel1.setText("IP Server:");
 
         txtIP.setForeground(new Color(0, 0, 255));
-        txtIP.setText("192.168.0.105");
+        txtIP.setText("192.168.");
         txtIP.setMinimumSize(new Dimension(8, 22));
 
         jButtonConnect.setForeground(new Color(255, 0, 0));
@@ -278,75 +271,64 @@ public class ClientGUI extends JFrame implements Runnable {
         jButton1.setText("Quét IP");
 
         GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblStatus2)
-                                    .addComponent(lblStatus1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblStatus4)
-                                    .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblClientName, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblIPAddress, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(txtIP, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonConnect)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lblStatus3)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnThoat, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(lblStatus, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                            .addComponent(lblSubnetMask, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))))
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(39)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(lblStatus4)
+        						.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        						.addComponent(lblStatus3))
+        					.addGap(25)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(lblSubnetMask, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+        						.addComponent(lblClientName, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(lblStatus, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(130)
+        					.addComponent(txtIP, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(jButtonConnect))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(42)
+        					.addComponent(lblStatus2))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(110)
+        					.addComponent(jButton1)
+        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addComponent(btnThoat, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtIP, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonConnect))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClientName)
-                    .addComponent(lblStatus4, GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus1)
-                    .addComponent(lblIPAddress))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSubnetMask))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus2, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatus))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnThoat))
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(25)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        					.addComponent(jLabel1)
+        					.addComponent(txtIP, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(jButtonConnect))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(lblClientName)
+        				.addComponent(lblStatus4, Alignment.TRAILING))
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblStatus3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(lblSubnetMask))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblStatus2, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(lblStatus))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton1)
+        				.addComponent(btnThoat))
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>                        
@@ -376,9 +358,7 @@ public class ClientGUI extends JFrame implements Runnable {
     private JButton jButtonConnect;
     private JLabel jLabel1;
     private JLabel lblClientName;
-    private JLabel lblIPAddress;
     private JLabel lblStatus;
-    private JLabel lblStatus1;
     private JLabel lblStatus2;
     private JLabel lblStatus3;
     private JLabel lblStatus4;

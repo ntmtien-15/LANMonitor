@@ -43,11 +43,11 @@ public class ServerGUI extends JFrame implements Runnable {
 		        runThreadRemoteDesktop(); 
             }
         }, timeUpdateTable * 1000, timeUpdateTable * 1000);
-        // server láº¯ng nghe remote desktop
+        // server lang nghe remote desktop
         runThreadRemoteDesktop(); 
-        // server láº¯ng nghe gá»Ÿi/ nháº­n file
+        // server lang nghe gá»Ÿi/ nháº­n file
         runThreadTransferFile();
-        // server láº¯ng nghe theo dÃµi client
+        // server lang nghe theo dÃµi client
         runThreadTheoDoiClient();
     }
     private ComputerTableModel getTbModel() {
@@ -57,10 +57,8 @@ public class ServerGUI extends JFrame implements Runnable {
 
     @Override
     public void run() {
-       // chat, gá»Ÿi thÃ´ng Ä‘iá»‡p, gá»Ÿi lá»‡nh shell
        try {
             final ServerSocket server = new ServerSocket(mainThreadPortNumber);
-            // Phá»¥c vá»¥ nhiá»�u client
             while (true) {
                 Socket socket;
                 try {
@@ -75,14 +73,13 @@ public class ServerGUI extends JFrame implements Runnable {
         }   
     }
      
-    //<editor-fold defaultstate="collapsed" desc="Thread transfer file">
     private void runThreadTransferFile() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     final ServerSocket server = new ServerSocket(fileTransferThreadPortNumber);
-                    // Phá»¥c vá»¥ nhiá»�u client
+                  
                     while (true) {
                         Socket socket;
                         try {
@@ -98,9 +95,6 @@ public class ServerGUI extends JFrame implements Runnable {
             }
         }).start();
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Thread remote desktop">
 
     private void runThreadRemoteDesktop() {
         new Thread(new Runnable() {
@@ -125,16 +119,13 @@ public class ServerGUI extends JFrame implements Runnable {
             }
         }).start();
     }
-    //</editor-fold>
-
-    //<editor-fold defaultstate="collapsed" desc="Thread theo dÃµi client">
     private void runThreadTheoDoiClient() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     final ServerSocket server = new ServerSocket(theoDoiClientThreadPortNumber);
-                    // Phá»¥c vá»¥ nhiá»�u client
+               
                     while (true) {
                         Socket socket;
                         try {
@@ -150,10 +141,8 @@ public class ServerGUI extends JFrame implements Runnable {
             }
         }).start();
     }
-    //</editor-fold>
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    @SuppressWarnings("unchecked")                       
     private void initComponents() {
 
         jToolBar1 = new JToolBar();
@@ -441,17 +430,16 @@ public class ServerGUI extends JFrame implements Runnable {
 
     private void btnChatClientActionPerformed(ActionEvent evt) {                                              
         if (tbComputerInfo.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ chat!");
+            JOptionPane.showMessageDialog(rootPane, "Ban chua chon may de chat!");
             return;
         }
         Socket mayClient = getTbModel().getItem(tbComputerInfo.getSelectedRow());
-        // Má»Ÿ form chat vá»›i client Ä‘Ã£ chá»�n
         new Thread(new ChatVoiClient(mayClient)).start();
     }                                             
     
     private void btnGoiThongDiepActionPerformed(ActionEvent evt) {                                                
         if (tbComputerInfo.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ gá»Ÿi!");
+            JOptionPane.showMessageDialog(rootPane, "Ban chua chon may de gui thong diep!");
             return;
         }
         int[] rowsSelected = tbComputerInfo.getSelectedRows();
@@ -459,7 +447,6 @@ public class ServerGUI extends JFrame implements Runnable {
         for (int i : rowsSelected) {
             dsMayClient.add(getTbModel().getItem(i));
         }
-        // Má»Ÿ form chat vá»›i cÃ¡c client Ä‘Ã£ chá»�n
         GuiThongDiep goiThongDiep = new GuiThongDiep(dsMayClient);
         goiThongDiep.setVisible(true);
     }                                               
@@ -467,7 +454,7 @@ public class ServerGUI extends JFrame implements Runnable {
     private void btnTruyenTapTinActionPerformed(ActionEvent evt) {                                                
         if (tbComputerInfo.getSelectedRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane,
-                    "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ gá»Ÿi file!");
+                    "Ban chua chon may de gui file!");
             return;
         }
         Socket mayClient =
@@ -480,7 +467,7 @@ public class ServerGUI extends JFrame implements Runnable {
     
     private void jButtonRemoteDesktopActionPerformed(ActionEvent evt) {                                                     
         if (tbComputerInfo.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ Ä‘iá»�u khiá»ƒn!");
+            JOptionPane.showMessageDialog(rootPane, "Ban chua chon may de dieu khien!");
             return;
         }
         Socket mayClient = getTbModel().getItem(tbComputerInfo.getSelectedRow());
@@ -493,11 +480,10 @@ public class ServerGUI extends JFrame implements Runnable {
     
     private void jButtonTheoDoiClientActionPerformed(ActionEvent evt) {                                                     
         if (tbComputerInfo.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ Ä‘iá»�u khiá»ƒn!");
+            JOptionPane.showMessageDialog(rootPane, "Ban chua chon may de theo doi!");
             return;
         }
         Socket mayClient = getTbModel().getItem(tbComputerInfo.getSelectedRow());
-        // Gá»Ÿi lá»‡nh yÃªu cáº§u client káº¿t ná»‘i Ä‘áº¿n socket server remote desktop
         TheodoiClient pk = new TheodoiClient();
         pk.setCmd(TheodoiClient.CMD_KHOIDONG);
         pk.setMessage(String.valueOf(theoDoiClientThreadPortNumber));
@@ -507,17 +493,15 @@ public class ServerGUI extends JFrame implements Runnable {
 
     private void jButtonChupHinhClientActionPerformed(ActionEvent evt) {                                                      
          if (tbComputerInfo.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Báº¡n chÆ°a chá»�n mÃ¡y Ä‘á»ƒ chá»¥p hÃ¬nh!");
+            JOptionPane.showMessageDialog(rootPane, "Ban chua chon may e chup hinh anh!");
             return;
         }
         Socket mayClient = getTbModel().getItem(tbComputerInfo.getSelectedRow());
-        // Má»Ÿ form chá»¥p hÃ¬nh vá»›i client Ä‘Ã£ chá»�n
         new Thread(new ChupHinhClient(mayClient)).start();
     }                                                     
 
     private void btnThoatActionPerformed(ActionEvent evt) {                                         
         System.exit(0);
-        //dispose();        // thoat táº¡m thá»�i
     }                                        
     private JButton btnChatClient;
     private JButton btnGoiThongDiep;
@@ -542,6 +526,5 @@ public class ServerGUI extends JFrame implements Runnable {
     private JLabel lblDateTime;
     private JLabel lblTrangThai;
     private JLabel lblTrangThai1;
-    private JTable tbComputerInfo;
-    // End of variables declaration                   
+    private JTable tbComputerInfo;               
 }
